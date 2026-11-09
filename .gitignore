@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+
+# Local build outputs; publish binaries through GitHub Releases instead
+release/
+releases/
+
+# Local backup from the review fixes
+.review-backup/
