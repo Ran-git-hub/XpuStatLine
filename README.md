@@ -1,56 +1,58 @@
 # xPU StatLine
 
-一行显示 CPU / GPU 实时状态的 Windows 悬浮条：占用率、温度、风扇转速。
+**English** | [简体中文](README.zh-CN.md)
+
+A one-line Windows overlay that shows live CPU / GPU status: load, temperature and fan speed.
 
 ```
 CPU  12%  55°C  2400 RPM | GPU   3%  45°C     0 RPM
 ```
 
-目前针对 ASUS ROG Flow X16（CPU + NVIDIA 独显）开发和测试。
+Currently developed and tested on an ASUS ROG Flow X16 (CPU + NVIDIA discrete GPU).
 
-## 使用
+## Usage
 
-1. 从 [Releases](https://github.com/Ran-git-hub/XpuStatLine/releases) 下载，运行 `XpuStatLine.exe`，允许管理员权限（读取硬件传感器需要）。
-2. 默认快捷键 `Ctrl+Alt+H` 显示 / 隐藏悬浮条。
-3. 左键拖动悬浮条；右键悬浮条或使用托盘菜单打开设置（语言、颜色、字号、透明度、快捷键、始终置顶）。
-4. 界面支持中文 / English：右键菜单或托盘菜单里点 `English` / `中文` 即可切换，也可在设置里选择。首次启动按系统显示语言自动选择。
+1. Download `XpuStatLine.exe` from [Releases](https://github.com/Ran-git-hub/XpuStatLine/releases) and run it. Allow administrator access when prompted (required to read hardware sensors).
+2. Press `Ctrl+Alt+H` (default) to show / hide the overlay.
+3. Drag the overlay with the left mouse button. Right-click it, or use the tray menu, to open Settings (language, color, text size, opacity, hotkey, always on top).
+4. The interface is available in English and Chinese: click `English` / `中文` in the right-click or tray menu to switch, or pick a language in Settings. On first launch it follows the Windows display language.
 
-设置保存在 `%LOCALAPPDATA%\XpuStatLine\settings.json`。旧版本（HardwareOverlay）的设置会在首次启动时自动迁移。
+Settings are stored in `%LOCALAPPDATA%\XpuStatLine\settings.json`. Settings from the previous version (HardwareOverlay) are migrated automatically on first launch.
 
-## 系统要求
+## Requirements
 
 - Windows x64
 - [.NET 8 Windows Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-无需安装或启动 LibreHardwareMonitor。
+LibreHardwareMonitor does not need to be installed or running.
 
-## 构建
+## Build
 
 ```
 dotnet publish XpuStatLine.csproj -c Release
 ```
 
-在项目根目录生成单文件 `XpuStatLine.exe`（依赖 .NET 8 Windows Desktop Runtime）。日常调试可用 `dotnet build -c Release`。
+This produces a single-file `XpuStatLine.exe` in the project root (requires the .NET 8 Windows Desktop Runtime). For day-to-day debugging, use `dotnet build -c Release`.
 
-`lib` 文件夹包含构建所需的 LibreHardwareMonitorLib 0.9.4 和 HidSharp。
+The `lib` folder contains LibreHardwareMonitorLib 0.9.4 and HidSharp, which are needed to build.
 
-## 已知限制
+## Known limitations
 
-- “始终置顶”默认开启，但独占全屏游戏（如 CS2）可能遮住普通置顶窗口，可改用游戏的无边框窗口模式。本程序不修改游戏，也不注入游戏进程。
-- 传感器名称目前按 Intel/AMD CPU + NVIDIA GPU 匹配；风扇转速通过华硕 ACPI 接口读取，非华硕机型显示 `--`。
+- "Always on top" is on by default, but exclusive-fullscreen games (such as CS2) can cover regular topmost windows; switch the game to borderless windowed mode instead. This program does not modify games or inject into game processes.
+- Sensor names are currently matched for Intel/AMD CPUs + NVIDIA GPUs. Fan speeds are read through the ASUS ACPI interface, so non-ASUS machines show `--`.
 
-## 诊断
+## Diagnostics
 
 ```
-XpuStatLine.exe --diagnose 输出文件.txt
+XpuStatLine.exe --diagnose output.txt
 ```
 
-把识别到的传感器读数写入指定文件后退出。
+Writes the detected sensor readings to the given file, then exits.
 
-## 许可与致谢
+## License and credits
 
-本项目采用 MIT 许可证，见 [LICENSE](LICENSE)。
+This project is licensed under the MIT License; see [LICENSE](LICENSE).
 
-- [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor)（LibreHardwareMonitorLib，MPL-2.0）
+- [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) (LibreHardwareMonitorLib, MPL-2.0)
 - [HidSharp](https://github.com/IntergatedCircuits/HidSharp)
-- 华硕 ACPI 只读接口参考 [G-Helper](https://github.com/seerge/g-helper)
+- The read-only ASUS ACPI interface is based on [G-Helper](https://github.com/seerge/g-helper)
