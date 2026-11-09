@@ -16,12 +16,6 @@
     <SelfContained>false</SelfContained>
     <PublishSingleFile>true</PublishSingleFile>
     <DebugType>embedded</DebugType>
-    <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
     <PublishDir>$(MSBuildProjectDirectory)\</PublishDir>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="LibreHardwareMonitorLib"><HintPath>lib\LibreHardwareMonitorLib.dll</HintPath></Reference>
-    <Reference Include="HidSharp"><HintPath>lib\HidSharp.dll</HintPath></Reference>
-  </ItemGroup>
 </Project>
