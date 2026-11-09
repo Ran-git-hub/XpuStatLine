@@ -2,9 +2,8 @@ bin/
 obj/
 .vs/
 
-# Local build outputs; publish binaries through GitHub Releases instead
-release/
-releases/
+# Published single-file exe (dotnet publish -c Release); distribute via GitHub Releases
+/XpuStatLine.exe
 
 # Local backup from the review fixes
 .review-backup/

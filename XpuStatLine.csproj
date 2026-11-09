@@ -1,4 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><UseWPF>true</UseWPF><UseWindowsForms>true</UseWindowsForms><ApplicationManifest>app.manifest</ApplicationManifest></PropertyGroup><ItemGroup><Reference Include="LibreHardwareMonitorLib"><HintPath>lib\LibreHardwareMonitorLib.dll</HintPath></Reference><Reference Include="HidSharp"><HintPath>lib\HidSharp.dll</HintPath></Reference></ItemGroup></Project>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
 
+  <!-- `dotnet publish -c Release` writes a single XpuStatLine.exe to the project root
+       (framework-dependent: needs the .NET 8 Windows Desktop Runtime). -->
+  <PropertyGroup>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <DebugType>embedded</DebugType>
+    <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
+    <PublishDir>$(MSBuildProjectDirectory)\</PublishDir>
+  </PropertyGroup>
 
-
+  <ItemGroup>
+    <Reference Include="LibreHardwareMonitorLib"><HintPath>lib\LibreHardwareMonitorLib.dll</HintPath></Reference>
+    <Reference Include="HidSharp"><HintPath>lib\HidSharp.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

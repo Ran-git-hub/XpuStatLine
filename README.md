@@ -10,9 +10,10 @@ CPU  12%  55°C  2400 RPM | GPU   3%  45°C     0 RPM
 
 ## 使用
 
-1. 从 [Releases](https://github.com/Ran-git-hub/XpuStatLine/releases) 下载并解压，运行 `XpuStatLine.exe`，允许管理员权限（读取硬件传感器需要）。
+1. 从 [Releases](https://github.com/Ran-git-hub/XpuStatLine/releases) 下载，运行 `XpuStatLine.exe`，允许管理员权限（读取硬件传感器需要）。
 2. 默认快捷键 `Ctrl+Alt+H` 显示 / 隐藏悬浮条。
-3. 左键拖动悬浮条；右键悬浮条或使用托盘菜单打开设置（颜色、字号、透明度、快捷键、始终置顶）。
+3. 左键拖动悬浮条；右键悬浮条或使用托盘菜单打开设置（语言、颜色、字号、透明度、快捷键、始终置顶）。
+4. 界面支持中文 / English：右键菜单或托盘菜单里点 `English` / `中文` 即可切换，也可在设置里选择。首次启动按系统显示语言自动选择。
 
 设置保存在 `%LOCALAPPDATA%\XpuStatLine\settings.json`。旧版本（HardwareOverlay）的设置会在首次启动时自动迁移。
 
@@ -26,8 +27,10 @@ CPU  12%  55°C  2400 RPM | GPU   3%  45°C     0 RPM
 ## 构建
 
 ```
-dotnet build XpuStatLine.csproj -c Release
+dotnet publish XpuStatLine.csproj -c Release
 ```
+
+在项目根目录生成单文件 `XpuStatLine.exe`（依赖 .NET 8 Windows Desktop Runtime）。日常调试可用 `dotnet build -c Release`。
 
 `lib` 文件夹包含构建所需的 LibreHardwareMonitorLib 0.9.4 和 HidSharp。
 
